@@ -5,6 +5,18 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 const darkModeToggle = document.getElementById('darkModeToggle');
 darkModeToggle.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark');
+    // Save preference to localStorage
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('darkMode', isDark ? 'dark' : 'light');
+});
+
+// Check for saved dark mode preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'dark') {
+        document.documentElement.classList.add('dark');
+    }
+    // ... rest of your DOMContentLoaded code ...
 });
 
 // Custom cursor functionality

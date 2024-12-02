@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+    color-scheme: light dark;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #faf0e6;  /* Light beige background */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-cursor {
@@ -266,4 +271,10 @@ body {
 #timeSlider {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+/* Update your dark mode styles */
+.dark body {
+    background-color: #1a1a1a;
+    color: #ffffff;
 }
