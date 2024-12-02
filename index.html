@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="config.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-600 dark:text-primary-400">Weather Forecast</h1>
+            <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Search Bar -->
+        <div class="flex items-center gap-4 mb-8">
+            <h1 class="text-3xl">Dashboard: <span id="selectedLocation" class="text-orange-500">Weather Forecast</span></h1>
+        </div>
+
+        <!-- Weather Navigation -->
+        <div class="bg-white/90 dark:bg-gray-800/90 rounded-full p-2 mb-8 flex gap-4 items-center">
+            <button class="px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/20 text-gray-700 dark:text-gray-200 flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Temperature
+            </button>
+            <!-- Add other weather options if needed -->
+        </div>
+
+        <!-- Search and Main Weather Display -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 order-2 lg:order-1">
+                <div class="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-4 md:p-6 shadow-lg">
+                    <!-- Search Input -->
+                    <div class="search-container relative mb-4 md:mb-6">
+                        <input type="text" id="cityInput" placeholder="Search city..." 
+                               class="w-full px-4 md:px-6 py-2 md:py-3 bg-gray-100 dark:bg-gray-700 rounded-full focus:outline-none text-sm md:text-base">
+                    </div>
+                    
+                    <!-- Map Container -->
+                    <div id="mapContainer" class="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden">
+                        <!-- Add your map implementation here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Weather Details -->
+            <div class="order-1 lg:order-2">
+                <div class="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-4 md:p-6 shadow-lg">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h2 id="temperature" class="text-5xl font-bold mb-2">26.9 °C</h2>
+                            <div class="flex items-center gap-2">
+                                <span class="text-gray-600 dark:text-gray-400">Feels like</span>
+                                <span id="feelsLike" class="font-semibold">30.1 °C</span>
+                            </div>
+                        </div>
+                        <img id="weatherIcon" src="" alt="Weather icon" class="w-16 h-16">
+                    </div>
+
+                    <!-- Weather Details Grid -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Wind speed</span>
+                            <span id="wind" class="font-semibold">3.97 m/s</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Wind Direction</span>
+                            <span id="windDirection" class="font-semibold">254 deg</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Humidity</span>
+                            <span id="humidity" class="font-semibold">85%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Clouds</span>
+                            <span id="clouds" class="font-semibold">10%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-400">Pressure</span>
+                            <span id="pressure" class="font-semibold">1010 hPa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Slider - make it scroll horizontally on mobile -->
+        <div class="mt-4 md:mt-8 bg-white/90 dark:bg-gray-800/90 rounded-3xl p-3 md:p-4 shadow-lg overflow-x-auto">
+            <div id="timeSlider" class="w-full min-w-[640px]">
+                <!-- Table will be inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

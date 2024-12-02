@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #faf0e6;  /* Light beige background */
+}
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0ea5e9;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background-color: #0ea5e9;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.suggestions-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.bg-white\/90 {
+    backdrop-filter: blur(12px);
+}
+
+/* Time slider styles */
+#timeSlider {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#timeSlider::-webkit-scrollbar {
+    height: 6px;
+}
+
+#timeSlider::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#timeSlider::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+}
+
+#timeSlider table {
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+#timeSlider th {
+    position: sticky;
+    top: 0;
+    background: inherit;
+    z-index: 1;
+}
+
+#timeSlider tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark #timeSlider tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Add smooth transitions */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Add these styles */
+#mapContainer {
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+/* Fix for map tiles in dark mode */
+.dark .leaflet-tile {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+.dark .leaflet-container {
+    background: #303030;
+}
+
+/* Add these styles for the search container and results */
+.relative {
+    position: relative;
+}
+
+#cityInput {
+    position: relative;
+    z-index: 40;
+}
+
+#mapContainer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Style the suggestions list */
+.suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 50;
+}
+
+.dark .suggestions-list {
+    background: #1f2937;
+}
+
+/* Style the suggestion items */
+.suggestions-list li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.suggestions-list li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .suggestions-list li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Search container and results styling */
+.search-container {
+    position: relative;
+    z-index: 1000; /* Higher than map */
+}
+
+#cityInput {
+    position: relative;
+    z-index: 1000;
+}
+
+.suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Map container styling */
+#mapContainer {
+    position: relative;
+    z-index: 1;
+}
+
+.leaflet-container {
+    z-index: 1;
+}
+
+/* Add these responsive styles */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Dashboard title */
+    .dashboard-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Weather details */
+    #temperature {
+        font-size: 2.5rem;
+    }
+
+    /* Adjust search results on mobile */
+    .suggestions-list {
+        max-height: 200px;
+        font-size: 0.875rem;
+    }
+
+    .suggestions-list li {
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Custom cursor (disable on mobile) */
+    .custom-cursor,
+    .cursor-dot {
+        display: none;
+    }
+
+    /* Time slider adjustments */
+    #timeSlider table {
+        font-size: 0.75rem;
+    }
+
+    #timeSlider th,
+    #timeSlider td {
+        padding: 0.5rem;
+    }
+
+    /* Weather icon size adjustment */
+    #weatherIcon {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Adjust map container for better mobile experience */
+#mapContainer {
+    min-height: 300px;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+/* Ensure the search container stays above map on all devices */
+.search-container {
+    position: relative;
+    z-index: 9999;
+}
+
+/* Make the suggestions list more mobile-friendly */
+.suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+/* Ensure the time slider table is scrollable on mobile */
+#timeSlider {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
